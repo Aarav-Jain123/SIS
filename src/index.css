@@ -21,10 +21,29 @@ body {
 }
 
 .card-expanded {
-  background-color: rgba(211, 211, 211, 0.767);
-  margin: 20px;
+  margin: 12px;
 }
 
 .card-body {
+  background-color: rgba(211, 211, 211, 0.767);
   padding: 10px;
+}
+
+.card .card-body {
+  margin-bottom: 8px;
+  margin-right: 1000px;
+  margin-left: 12px;
+}
+
+.btn {
+  padding: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 500;
+  border: none;
+  color: white;
+}
+
+.btn-primary {
+  background-color: rgb(54, 111, 185);
 }

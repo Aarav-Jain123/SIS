@@ -18,7 +18,7 @@ function CardExpandedComp(){
         <div className='card-body'>
         <h3 className='card-title'>Welcome user,</h3>
         <p className="card-text">
-        Some quick example text to build on the card title and make up the bulk of the card's content.
+        Let's continue our wornderful journey in your farms.
         </p>
         </div>
       </div>
@@ -26,8 +26,23 @@ function CardExpandedComp(){
   );
 }
 
-function CardComp(){
-  return 
+function CardComp({title, text}){
+  return (
+    <section>
+      <div className='card'>
+        <div className='card-body'>
+          <h3 className='card-title'>{title}</h3>
+          <p className='card-text'>{text}</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function BtnComp({text}){
+  return (
+    <button className='btn btn-primary'>{text}</button>
+  )
 }
 
 function App() {
@@ -35,6 +50,8 @@ function App() {
     <div className="App">
       <HeaderComp />
       <CardExpandedComp />
+      <CardComp title={'Hello'} text={'World'} />
+      <BtnComp text={'+ Add'}/>
     </div>
   );
 }
