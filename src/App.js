@@ -8,8 +8,8 @@ function HeaderComp(){
         <h3 className='nav-branding'>SMART IRRIGATION SYSTEM</h3>
       </nav>
     </header>
-  )
-}
+  );
+};
 
 function CardExpandedComp(){
   return (
@@ -24,7 +24,13 @@ function CardExpandedComp(){
       </div>
     </section>
   );
-}
+};
+
+async function pullData(){
+  const res = await fetch('127.0.0.1:8000');
+  const data = await res.json()
+  return data;
+};
 
 function CardComp({title, text}){
   return (
@@ -36,14 +42,14 @@ function CardComp({title, text}){
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-function BtnComp({text}){
+function BtnComp({text, type}){
   return (
-    <button className='btn btn-primary'>{text}</button>
-  )
-}
+    <button className={`btn btn-${type}`}>{text}</button>
+  );
+};
 
 function App() {
   return (
@@ -51,9 +57,10 @@ function App() {
       <HeaderComp />
       <CardExpandedComp />
       <CardComp title={'Hello'} text={'World'} />
-      <BtnComp text={'+ Add'}/>
+      <BtnComp text={'+ Add'} type={'primary'}/>
+      <BtnComp text={'- Delete'} type={'danger'}/>
     </div>
   );
-}
+};
 
 export default App;

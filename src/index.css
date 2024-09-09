@@ -41,9 +41,22 @@ body {
   padding-right: 8px;
   font-size: 500;
   border: none;
+  margin: 12px;
   color: white;
 }
 
 .btn-primary {
-  background-color: rgb(54, 111, 185);
+  background-color: blue;
+}
+
+.btn-primary:hover{
+  background-color: darkblue;
+}
+
+.btn-danger{
+  background-color: red;
+}
+
+.btn-danger:hover{
+  background-color: darkred;
 }
