@@ -1,5 +1,5 @@
 import './App.css';
-
+import {getWeatherData} from './script'
 
 function HeaderComp(){
   return (
@@ -26,12 +26,6 @@ function CardExpandedComp(){
   );
 };
 
-async function pullData(){
-  const res = await fetch('127.0.0.1:8000');
-  const data = await res.json()
-  return data;
-};
-
 function CardComp({title, text}){
   return (
     <section>
@@ -52,11 +46,12 @@ function BtnComp({text, type}){
 };
 
 function App() {
+  const data = getWeatherData();
   return (
     <div className="App">
       <HeaderComp />
       <CardExpandedComp />
-      <CardComp title={'Hello'} text={'World'} />
+      <CardComp title={'Hello'} text={data} />
       <BtnComp text={'+ Add'} type={'primary'}/>
       <BtnComp text={'- Delete'} type={'danger'}/>
     </div>
