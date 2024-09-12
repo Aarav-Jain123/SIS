@@ -15,5 +15,32 @@ def get_weather():
 
     if response.status_code == 200:
         json_result = response.json()
+        
+        weather = json_result['weather'][0]
+        
+        weather_main = weather['main']
+        weather_desc = weather['description']
+        
+        main = json_result['main']
+        
+        temp_c = round(main['temp'] - 273.15)
+        temp_f = temp_c * 9/5 + 32
+        
+        pressure_pas = main['pressure']
+        
+        humdity = main['humidity']
+        
+        visibility = json_result['visibility'] / 1000
+        
+        wind = json_result['wind']
+        
+        wind_speed = wind['speed']
+        
+        sys = json_result['sys']
+        
+        country = sys['country']
+        
+        city = json_result['name']
+        
 
-    return json_result
+    return [weather_main, weather_desc, temp_c, temp_f, pressure_pas, humdity, visibility, wind_speed, country, city]
