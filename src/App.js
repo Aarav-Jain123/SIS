@@ -1,5 +1,7 @@
 import './App.css';
+import React, { useState, useEffect } from 'react';
 
+const url = 'http://127.0.0.1:8000/'
 function HeaderComp(){
   return (
     <header className='nav-header'>
@@ -45,19 +47,33 @@ function BtnComp({text, type}){
 };
 
 async function App() {
-  const url = 'http://127.0.0.1:8000/';
-  const res = await fetch(url);
-  const data = await res.json();
-  const weatherData = data.weather_data;
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+      function x() {
+        fetch(url)
+        .then(response => response.json())
+        .then(response => setData(response))
+        .catch(error => console.error('Error fetching data:', error));
+      }
+      x()
+  }, []);
+
+
   return (
     <div className="App">
-      <HeaderComp />
-      <CardExpandedComp />
-      <CardComp title={'Hello'} text={weatherData[0]} />
-      <BtnComp text={'+ Add'} type={'primary'}/>
-      <BtnComp text={'- Delete'} type={'danger'}/>
+      <div>
+      <h1>Data Display</h1>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index}>
+            {item.name}: {item.value}
+          </li>
+        ))}
+      </ul>
+    </div>
     </div>
   );
-};
+}
 
 export default App;
