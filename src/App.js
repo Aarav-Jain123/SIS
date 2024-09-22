@@ -1,7 +1,7 @@
+import { response } from 'express';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
-const url = 'http://127.0.0.1:8000/'
 function HeaderComp(){
   return (
     <header className='nav-header'>
@@ -47,33 +47,31 @@ function BtnComp({text, type}){
 };
 
 async function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+
+  let getData = async () => {
+    let response = await fetch('http://127.0.0.1:8000/');
+    let data = await response.json();
+    setData(data);
+  };
 
   useEffect(() => {
-      function x() {
-        fetch(url)
-        .then(response => response.json())
-        .then(response => setData(response))
-        .catch(error => console.error('Error fetching data:', error));
-      }
-      x()
+    getData()
   }, []);
 
-
   return (
-    <div className="App">
-      <div>
-      <h1>Data Display</h1>
+    <div>
+      <h1>Data List</h1>
       <ul>
-        {data.map((item, index) => (
-          <li key={index}>
-            {item.name}: {item.value}
+        {data.map(item => (
+          <li>
+            <h2>{item}</h2>
           </li>
         ))}
       </ul>
     </div>
-    </div>
   );
-}
+};
+
 
 export default App;
