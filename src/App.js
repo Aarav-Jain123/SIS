@@ -45,28 +45,25 @@ function BtnComp({text, type}){
   );
 };
 
-async function App() {
-  const [data, setData] = useState(null);
+function App() {
+  let [data, setData] = useState([]);
 
   let getData = async () => {
     let response = await fetch('http://127.0.0.1:8000/');
     let data = await response.json();
+    console.log(data);
     setData(data);
   };
-
+  
   useEffect(() => {
-    getData()
+    getData();
   }, []);
 
   return (
     <div>
       <h1>Data List</h1>
+
       <ul>
-        {data.map(item => (
-          <li>
-            <h2>{item}</h2>
-          </li>
-        ))}
       </ul>
     </div>
   );

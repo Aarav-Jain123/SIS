@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'mainapp.apps.MainappConfig',
     'rest_framework'
 ]
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'mainapp.middleware.StaffRequiredMiddleware', 
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -137,3 +139,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jainaarav552@gmail.com'
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 SESSION_SAVE_EVERY_REQUEST = True
+CORS_ALLOW_ALL_ORGINS = True
