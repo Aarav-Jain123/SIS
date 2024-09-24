@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'mainapp.apps.MainappConfig',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
@@ -139,4 +139,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jainaarav552@gmail.com'
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 SESSION_SAVE_EVERY_REQUEST = True
-CORS_ALLOW_ALL_ORGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
