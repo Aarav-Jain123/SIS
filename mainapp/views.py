@@ -7,5 +7,5 @@ from .weatherPuller import get_weather
 @api_view(['GET'])
 def index(request):
     weather_data = get_weather()
-    res = [{'weather_data': weather_data}]
+    res = [{'key': 0, 'weather_data': weather_data}]
     return Response(data=res)

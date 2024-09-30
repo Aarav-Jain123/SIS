@@ -26,7 +26,7 @@ def get_weather():
         temp_c = round(main['temp'] - 273.15)
         temp_f = temp_c * 9/5 + 32
         
-        pressure_pas = main['pressure']
+        # pressure_pas = main['pressure']
         
         humdity = main['humidity']
         
@@ -43,4 +43,4 @@ def get_weather():
         city = json_result['name']
         
 
-    return [weather_main, weather_desc, temp_c, temp_f, pressure_pas, humdity, visibility, wind_speed, country, city]
+    return [weather_main, weather_desc, temp_c, temp_f, humdity, visibility, wind_speed, country, city]
