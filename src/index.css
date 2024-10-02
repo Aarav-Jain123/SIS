@@ -4,10 +4,16 @@ body {
   font-size: larger;
 }
 
+.common-properties {
+  background: #1d1f27;
+  color: white;
+
+
+}
+
 nav {
   background: #fff;
   padding: 1px 0;
-  background-color: #1d1f27;
   border-radius: 10px;
 }
 
@@ -62,11 +68,9 @@ nav.navbar ul li a:hover:after {
 }
 
 .slider {
-  background: #1d1f27;
   padding: 20px;
   margin-top: 12px;
   border-radius: 10px;
-  color: white;
 }
 
 .slider-title {
@@ -77,3 +81,29 @@ nav.navbar ul li a:hover:after {
   text-align: center;
 }
 
+.card {
+  margin: 12px 0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.card input {
+  padding: 5px;
+  border-radius: 50px;
+}
+
+.btn {
+  padding: 5px 30px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 900;
+  border: none;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.548);
+}
+
+.btn-peace {
+  background-color: rgb(255, 255, 255);
+}
