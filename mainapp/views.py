@@ -17,4 +17,12 @@ def weather_(request):
 
 @api_view(['POST'])
 def set_timer(request):
-    pass
+    h = request.POST.get('h')
+    print(type(h))
+    return HttpResponse('g')
+    
+
+# @api_view(['POST'])
+# def set_timer(request):
+#     h = request.POST.get('h')
+#     print(type(h))

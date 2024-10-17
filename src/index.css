@@ -7,14 +7,13 @@ body {
 .common-properties {
   background: #1d1f27;
   color: white;
-
-
+  padding: 20px;
+  border-radius: 10px;
 }
 
 nav {
   background: #fff;
   padding: 1px 0;
-  border-radius: 10px;
 }
 
 nav ul li {
@@ -68,26 +67,23 @@ nav.navbar ul li a:hover:after {
 }
 
 .slider {
-  padding: 20px;
   margin-top: 12px;
-  border-radius: 10px;
 }
 
 .slider-title {
   text-align: center;
 }
 
-.slider .slider-body h1 {
+h1 {
   text-align: center;
+  font-size: 2em;
 }
 
 .card {
   margin: 12px 0;
-  padding: 20px;
-  border-radius: 10px;
 }
 
-.card input {
+.card .timer {
   padding: 5px;
   border-radius: 50px;
 }
@@ -95,7 +91,6 @@ nav.navbar ul li a:hover:after {
 .btn {
   padding: 5px 30px;
   font-size: 1em;
-  font-style: italic;
   font-weight: 900;
   border: none;
 }
@@ -106,4 +101,12 @@ nav.navbar ul li a:hover:after {
 
 .btn-peace {
   background-color: rgb(255, 255, 255);
+}
+
+.query {
+  display: flex;
+  flex-direction: column;
+  padding-right: 25%;
+  margin-bottom: 1%;
+  font-size: medium;
 }
