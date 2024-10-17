@@ -17,11 +17,14 @@ def weather_(request):
 
 @api_view(['POST'])
 def set_timer(request):
-    h = request.POST.get('h')
-    print(type(h))
-    return HttpResponse('g')
+    return Response()
 
 
 @api_view(['POST'])
 def irr(request):
+    return Response()
+
+
+@api_view(['POST'])
+def farm_care_ai(request):
     return Response()

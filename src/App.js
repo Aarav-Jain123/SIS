@@ -46,19 +46,24 @@ function TimerComp() {
 
   function postTimerData(e) {
     e.preventDefault();
-    const formEL = document.getElementById('timer-form');
-    const formData = new FormData(formEL);
-    const data = Object.fromEntries(formData);
-    fetch(
+
+    const data = {
+      'sd': timerParameter.second,
+      'ms': timerParameter.minute,
+      'hr': timerParameter.hour,
+    }
+
+    const req = fetch(
       "http://127.0.0.1:8000/api/timer/",
       {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        method: 'POST',
-        body: JSON.stringify(data)
-      }
-    ).then(res => res.json).then(data => console.log(data));
+        body: JSON.stringify(data),
+      }).then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   };
 
   return (
@@ -118,7 +123,7 @@ function IrrigationInfoComp() {
 function ControlIrrigationSystem() {
   function postReq() {
     const req = fetch(
-      'http://127.0.0.1:8000/api/timer/',
+      'http://127.0.0.1:8000/api/irr/',
       {
         headers: {
           "Content-Type": 'application/json'
@@ -136,13 +141,47 @@ function ControlIrrigationSystem() {
 }
 
 function FarmCareAIComp() {
+  const [prompt, setPrompt] = useState({
+    userPrompt: ``,
+  });
+
+  function handlePromptChange(p) {
+    setPrompt(
+      {
+        ...prompt,
+        userPrompt: p.target.value
+      }
+    )
+  };
+
+  function postUserPrompt(e) {
+    e.preventDefault();
+
+    const data = {
+      'up': prompt.userPrompt
+    }
+
+    const req = fetch(
+      "http://127.0.0.1:8000/api/farmcareAI/",
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }; 
   return (
     <div className='ai-card common-properties'>
       <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 24.75-17.62 42.37Q724.75-160 700-160H600v80h-60v-140h160v-200h114l-45-180q-24-97-105-158.5T480-820q-125 0-212.5 86.5T180-522.46q0 64.42 26.32 122.39Q232.65-342.09 281-297l19 18v199h-60Zm257-370Zm-48 76h60l3-44q12-2 22.47-8.46Q544.94-432.92 553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8.33-7.69-19.17-13.85Q523-635 512-638l-3-44h-60l-3 44q-11 3-21.83 9.15Q413.33-622.69 405-615l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8.06 8.08 18.53 14.54Q434-420 446-418l3 44Zm30.12-84q-29.12 0-49.62-20.38-20.5-20.38-20.5-49.5t20.38-49.62q20.38-20.5 49.5-20.5t49.62 20.38q20.5 20.38 20.5 49.5t-20.38 49.62q-20.38 20.5-49.5 20.5Z" /></svg>
-      <h1>FarmCare AI</h1>
-      <p id='farmcare-ai'>FarmCare: Hello there! How can I help you?</p>
-      <input type='text' id='query' className='query' name='query' />
-      <button className='btn btn-peace' id='farmcare-smbt'>Sumbit</button>
+      <form id='ai-form' onSubmit={postUserPrompt}>
+        <h1>FarmCare AI</h1>
+        <p id='farmcare-ai'>FarmCare: Hello there! How can I help you?</p>
+        <input type='text' id='query' className='query' name='query' value={prompt.userPrompt} onChange={handlePromptChange} />
+        <button className='btn btn-peace' id='farmcare-smbt'>Sumbit</button>
+      </form>
     </div>
   );
 }
@@ -220,17 +259,3 @@ function App() {
 
 
 export default App;
-
-// (event) => {
-//   event.preventDefault();
-//   const formEl = document.querySelector('#form-el'); 
-//   const formData = new FormData(formEl);
-//   const data = Object.fromEntries(formData);
-
-//   fetch('http://127.0.0.1:8000/api/timer/', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data)
-//   });
