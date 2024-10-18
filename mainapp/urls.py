@@ -6,5 +6,5 @@ urlpatterns = [
     path('', index, name='Index'),
     path('api/timer/', set_timer, name='Timer'),
     path('api/irr/', irr, name='Irrigate btn'),
-    path('api/farmcareAI/', farm_care_ai, name='AI')
+    path('api/farmcareAI/', farm_care_ai, name='AI'),
 ]
