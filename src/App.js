@@ -95,6 +95,7 @@ function TimerComp() {
         <div style={{ textAlign: 'center' }}>
           <h1>{timerParameter.hour} : {timerParameter.minute} : {timerParameter.second}</h1>
           <button type='sumbit' id='timer-sumbit-btn' className='btn btn-peace'><i>START</i></button>
+          <p>The timer will automatically start, don't worry.</p>
         </div>
 
       </div>
@@ -109,12 +110,10 @@ function IrrigationInfoComp() {
         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M480-478q-17.42 0-29.21-11.79T439-519q0-17.42 11.79-29.21T480-560q17.42 0 29.21 11.79T521-519q0 17.42-11.79 29.21T480-478Zm0-160q-17.42 0-29.21-11.79T439-679q0-17.42 11.79-29.21T480-720q17.42 0 29.21 11.79T521-679q0 17.42-11.79 29.21T480-638Zm0-160q-17.42 0-29.21-11.79T439-839q0-17.42 11.79-29.21T480-880q17.42 0 29.21 11.79T521-839q0 17.42-11.79 29.21T480-798Zm119 399q-17.42 0-29.21-11.79T558-440q0-17.42 11.79-29.21T599-481q17.42 0 29.21 11.79T640-440q0 17.42-11.79 29.21T599-399Zm113-114q-17.42 0-29.21-11.79T671-554q0-17.42 11.79-29.21T712-595q17.42 0 29.21 11.79T753-554q0 17.42-11.79 29.21T712-513Zm113-112q-17.42 0-29.21-11.79T784-666q0-17.42 11.79-29.21T825-707q17.42 0 29.21 11.79T866-666q0 17.42-11.79 29.21T825-625ZM361-399q-17.42 0-29.21-11.79T320-440q0-17.42 11.79-29.21T361-481q17.42 0 29.21 11.79T402-440q0 17.42-11.79 29.21T361-399ZM248-513q-17.43 0-29.21-11.79Q207-536.58 207-554t11.79-29.21Q230.57-595 248-595q17.42 0 29.21 11.79T289-554q0 17.42-11.79 29.21T248-513ZM135-625q-17.43 0-29.21-11.79Q94-648.58 94-666t11.79-29.21Q117.57-707 135-707t29.21 11.79Q176-683.42 176-666t-11.79 29.21Q152.43-625 135-625ZM450-80v-170H290v-60h380v60H510v170h-60Z" /></svg>
         <h1>Your Irrigation System:</h1>
 
-        <h2>Irrigating: </h2>
-        <h2>Will Rain: </h2> {/* also tell in how many hours */}
-        <h2>Irrigate in for: </h2> {/* Irrigate in (x hours ) for (x hours) */}
-        <h2>Next round of irrigation in: </h2>
-        <h2>Crop: </h2>
-        <h2>Soil Type: </h2> {/* Soil type and its factors such as water retaining ability etc. */}
+        <h2>Will Rain (4 hours): False</h2> {/* also tell in how many hours */}
+        <h2>Crop: N/A</h2>
+        <h2>Soil Type: Loamy</h2> {/* Soil type and its factors such as water retaining ability etc. */}
+        <h2>Season: Winter</h2>
       </div>
     </div>
   );
@@ -135,6 +134,7 @@ function ControlIrrigationSystem() {
   return (
     <div className='card common-properties'>
       <button className='btn btn-peace' id='irr-btn' onClick={postReq}>Irrigate</button>
+      <p>In order to create a balance in soil factors, sprinkler will irrigate for 20 mins. Once activated, it can't stop.</p>
     </div>
   )
 
@@ -145,6 +145,8 @@ function FarmCareAIComp() {
     userPrompt: ``,
   });
 
+  // const [aiPrompt, setAiPrompt] = useState()
+
   function handlePromptChange(p) {
     setPrompt(
       {
@@ -153,6 +155,10 @@ function FarmCareAIComp() {
       }
     )
   };
+
+  // function aiPrompt(a){
+
+  // }
 
   function postUserPrompt(e) {
     e.preventDefault();
@@ -169,9 +175,8 @@ function FarmCareAIComp() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data),
-      }).then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+      }).then((res) => (res.json()))
+      .catch((err) => (console.log(err)));
   }; 
   return (
     <div className='ai-card common-properties'>

@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .weatherPuller import get_weather
+from .promptPuller import pull_answer
+import requests
 
 
 # Create your views here.
@@ -24,7 +26,9 @@ def set_timer(request):
 def irr(request):
     return Response()
 
-
 @api_view(['POST'])
 def farm_care_ai(request):
-    return Response()
+    res = request.data 
+    answer = pull_answer(res['up'])
+    response = [{'key': 0, 'answer': answer}] 
+    return Response(data=response)
