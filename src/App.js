@@ -182,7 +182,7 @@ function FarmCareAIComp() {
         <h1>FarmCare AI</h1>
         <p>FarmCareAI: Please prompt your query below:</p>
         {aiPrompt.map((a) => (
-          <pre id='farmcare-ai' key={a.key}>FarmCare: {a.answer}</pre>))
+          <p id='farmcare-ai' key={a.key}>FarmCare: {a.answer}</p>))
         }
         <input type='text' id='query' className='query' name='query' value={prompt.userPrompt} onChange={handlePromptChange} />
         <button className='btn btn-peace' id='farmcare-smbt'>Sumbit</button>
