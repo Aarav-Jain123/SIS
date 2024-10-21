@@ -54,7 +54,7 @@ function TimerComp() {
     }
 
     const req = fetch(
-      "http://127.0.0.1:8000/api/timer/",
+      "https://8c9dw08c-8000.inc1.devtunnels.ms/api/timer/",
       {
         method: 'POST',
         headers: {
@@ -122,7 +122,7 @@ function IrrigationInfoComp() {
 function ControlIrrigationSystem() {
   function postReq() {
     const req = fetch(
-      'http://127.0.0.1:8000/api/irr/',
+      'https://8c9dw08c-8000.inc1.devtunnels.ms/api/irr/',
       {
         headers: {
           "Content-Type": 'application/json'
@@ -164,7 +164,7 @@ function FarmCareAIComp() {
     }
 
     const req = fetch(
-      "http://127.0.0.1:8000/api/farmcareAI/",
+      "https://8c9dw08c-8000.inc1.devtunnels.ms/api/farmcareAI/",
       {
         method: 'POST',
         headers: {
@@ -194,8 +194,7 @@ function FarmCareAIComp() {
 function App() {
   let [data, setData] = useState([]);
   let getData = async () => {
-    // let response = await fetch('https://8c9dw08c-8000.inc1.devtunnels.ms/api/weather/');
-    let response = await fetch('http://127.0.0.1:8000/api/weather/')
+    let response = await fetch('https://8c9dw08c-8000.inc1.devtunnels.ms/api/weather/');
     let data = await response.json();
     console.log(data.weather_data);
     setData(data);
