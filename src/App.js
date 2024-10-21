@@ -223,7 +223,7 @@ function App() {
 
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-                  <h4 style={{ textAlign: 'left' }}>Humdity</h4>
+                  <h4 style={{ textAlign: 'left' }}>Humidity</h4>
                   <h4 style={{ textAlign: "center" }}>Visibility</h4>
                   <h4 style={{ textAlign: "right" }}>Wind speed</h4>
                 </div>
