@@ -1,0 +1,10 @@
+#include <Python.h>
+
+// Arduino code and funcs, let func be: uwu()
+
+static PyObject* findPrimes(PyObject*, self, PyObject * args)	
+{
+	int num1, num2, sts;
+	
+}
+https://youtu.be/l8dRF_AnFE0?si=YRJvONkDNUkG5JmF
