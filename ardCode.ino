@@ -1,37 +1,37 @@
-// Pin definitions
-const int soilSensorPin = A0; // Analog pin connected to soil moisture sensor
-const int relayPin = 7;       // Digital pin connected to relay module
+// Define pins
+const int soilSensorPin = A0;  // Analog pin for soil sensor
+const int relayPin = 7;        // Digital pin for relay
 
-// Thresholds
-const int moistureThreshold = 400; // Adjust this value according to your soil sensor readings
+// Define thresholds
+int moistureThreshold = 500;   // Moisture threshold (calibrate based on your sensor)
+
+// Variables
+int moistureLevel = 0;
 
 void setup() {
   Serial.begin(9600);
-  
-  // Initialize relay pin as output
+  pinMode(soilSensorPin, INPUT);
   pinMode(relayPin, OUTPUT);
-  
-  // Initially turn off the pump
-  digitalWrite(relayPin, HIGH); // Relay is active low, so HIGH turns it off
+  digitalWrite(relayPin, HIGH); // Turn relay off initially
 }
 
 void loop() {
-  // Read soil moisture level
-  int soilMoistureValue = analogRead(soilSensorPin);
+  // Read soil moisture sensor
+  moistureLevel = analogRead(soilSensorPin);
   Serial.print("Soil Moisture Level: ");
-  Serial.println(soilMoistureValue);
+  Serial.println(moistureLevel);
 
-  // Check if soil moisture is below threshold
-  if (soilMoistureValue < moistureThreshold) {
-    // Soil is dry - turn on the pump
-    digitalWrite(relayPin, LOW); // Relay active low (LOW turns it on)
-    Serial.println("Soil is dry. Turning on the water pump.");
+  // Check moisture level
+  if (moistureLevel < moistureThreshold) {
+    // Soil is dry; turn on the pump
+    digitalWrite(relayPin, LOW);  // Activate relay
+    Serial.println("Soil is dry. Pump ON.");
   } else {
-    // Soil is sufficiently moist - turn off the pump
-    digitalWrite(relayPin, HIGH); // HIGH turns the relay off
-    Serial.println("Soil is moist. Turning off the water pump.");
+    // Soil is wet; turn off the pump
+    digitalWrite(relayPin, HIGH); // Deactivate relay
+    Serial.println("Soil is wet. Pump OFF.");
   }
 
-  // Delay for a bit to avoid rapid switching
-  delay(1000);
+  // Wait for some time before next reading
+  delay(5000); // Check every 5 seconds (adjustable)
 }
