@@ -1,0 +1,19 @@
+Wiring Diagram
+Soil Moisture Sensor:
+
+VCC → Arduino 5V
+GND → Arduino GND
+Analog Output (A0) → Arduino Analog Pin A0
+Relay Module (5V):
+
+VCC → Arduino 5V
+GND → Arduino GND
+IN → Arduino Digital Pin 7
+The relay’s NO (Normally Open) terminal connects to one side of the water pump’s power input, while the other side of the water pump’s power input connects to the Arduino GND.
+Water Pump:
+
+Positive terminal connects to the relay’s NO terminal
+Negative terminal connects to GND
+Battery (9V):
+
+Connected to the Arduino’s power input to power the board.
