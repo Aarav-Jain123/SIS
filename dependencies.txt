@@ -1,0 +1,7 @@
+python:
+
+pip install django djangorestframework google-generativeai django-cors-headers requests pandas sklearn load-dotenv
+
+js:
+
+npm
