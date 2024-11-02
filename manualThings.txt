@@ -8,3 +8,5 @@ static PyObject* findPrimes(PyObject*, self, PyObject * args)
 	
 }
 https://youtu.be/l8dRF_AnFE0?si=YRJvONkDNUkG5JmF
+
+since i am new to the combination of python and C, i will use this vid as reference tool.
