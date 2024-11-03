@@ -1,12 +1,6 @@
 import requests
 from dotenv import load_dotenv
-import chardet
-import datetime
 import os
-import pandas as pd
-from sklearn.preprocessing import LabelEncoder
-from sklearn.naive_bayes import GaussianNB
-# from .views import state, pin_code, city
 
 def get_weather():
     load_dotenv()
@@ -48,14 +42,3 @@ def get_weather():
         
 
     return [weather_main, weather_desc, temp_c, temp_f, humdity, visibility, wind_speed, country, city]
-
-
-def predict_rain():
-    # with open('weatherdata.csv', 'rb') as f:
-    #     result = chardet.detect(f.read())
-    #     print(result)
-        
-    df = pd.read_csv('weatherdata.CSV', encoding='ISO-8859-1', low_memory=False, on_bad_lines='skip')
-    print(df)
-
-predict_rain()

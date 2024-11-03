@@ -164,7 +164,7 @@ function FarmCareAIComp() {
     }
 
     const req = fetch(
-      "https://8c9dw08c-8000.inc1.devtunnels.ms/api/farmcareAI/",
+      "http://127.0.0.1:8000/api/farmcareAI/",
       {
         method: 'POST',
         headers: {

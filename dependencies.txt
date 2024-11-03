@@ -1,6 +1,6 @@
 python:
 
-pip install django djangorestframework google-generativeai django-cors-headers requests pandas sklearn load-dotenv
+pip install django djangorestframework google-generativeai django-cors-headers requests pandas sklearn load-dotenv import_ipynb
 
 js:
 
