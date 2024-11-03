@@ -1,0 +1,6 @@
+imp steps:
+
+1. wp.ipynb, cell 6, change weather values
+2. install packages
+3. ask wi-fi password
+4. test code
