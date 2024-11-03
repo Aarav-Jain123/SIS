@@ -3,5 +3,5 @@ python:
 pip install django djangorestframework google-generativeai django-cors-headers requests pandas sklearn load-dotenv import_ipynb
 
 js:
-
+https://www.youtube.com/watch?v=Iz_AETY9o5E
 npm
