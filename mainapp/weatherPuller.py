@@ -1,6 +1,7 @@
 import requests
 from dotenv import load_dotenv
 import os
+from .promptPuller import pull_answer
 
 def get_weather():
     load_dotenv()
@@ -40,5 +41,16 @@ def get_weather():
         
         city = json_result['name']
         
+#         el = pull_answer(f"""
+# I am a farmer growing wheat on a loamy soil during winter season, elaborate these weather conditions:
+# {weather_main}
+# {temp_c}
+# {humdity}
+# {visibility}
+# {wind_speed}
+# {country}
+# {city}
+# """)
+        
 
-    return [weather_main, weather_desc, temp_c, temp_f, humdity, visibility, wind_speed, country, city]
+    return [weather_main, weather_desc, temp_c, temp_f, humdity, visibility, wind_speed, country, city,]

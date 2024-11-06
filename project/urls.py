@@ -26,6 +26,7 @@ urlpatterns = [
     path('api/farmcareAI/', include('mainapp.urls')),
     path('api/irr/', include('mainapp.urls')),
     path('api/weather/', include('mainapp.urls')),
+    path('api/wp/', include('mainapp.urls')),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('password_reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),

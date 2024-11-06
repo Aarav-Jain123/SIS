@@ -1,6 +1,12 @@
 import './index.css';
 import React, { useState, useEffect } from 'react';
 
+var irr;
+
+function delayS(ms) {
+  return new Promise(resolve => { setTimeout(resolve, ms) });
+};
+
 function HeaderComp() {
   return (
     <header>
@@ -105,40 +111,40 @@ function TimerComp() {
 
 function IrrigationInfoComp() {
   return (
-    <div>
+    <div style={{ 'margin': '5px' }}>
       <div className='irrigation-sys-info common-properties'>
         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M480-478q-17.42 0-29.21-11.79T439-519q0-17.42 11.79-29.21T480-560q17.42 0 29.21 11.79T521-519q0 17.42-11.79 29.21T480-478Zm0-160q-17.42 0-29.21-11.79T439-679q0-17.42 11.79-29.21T480-720q17.42 0 29.21 11.79T521-679q0 17.42-11.79 29.21T480-638Zm0-160q-17.42 0-29.21-11.79T439-839q0-17.42 11.79-29.21T480-880q17.42 0 29.21 11.79T521-839q0 17.42-11.79 29.21T480-798Zm119 399q-17.42 0-29.21-11.79T558-440q0-17.42 11.79-29.21T599-481q17.42 0 29.21 11.79T640-440q0 17.42-11.79 29.21T599-399Zm113-114q-17.42 0-29.21-11.79T671-554q0-17.42 11.79-29.21T712-595q17.42 0 29.21 11.79T753-554q0 17.42-11.79 29.21T712-513Zm113-112q-17.42 0-29.21-11.79T784-666q0-17.42 11.79-29.21T825-707q17.42 0 29.21 11.79T866-666q0 17.42-11.79 29.21T825-625ZM361-399q-17.42 0-29.21-11.79T320-440q0-17.42 11.79-29.21T361-481q17.42 0 29.21 11.79T402-440q0 17.42-11.79 29.21T361-399ZM248-513q-17.43 0-29.21-11.79Q207-536.58 207-554t11.79-29.21Q230.57-595 248-595q17.42 0 29.21 11.79T289-554q0 17.42-11.79 29.21T248-513ZM135-625q-17.43 0-29.21-11.79Q94-648.58 94-666t11.79-29.21Q117.57-707 135-707t29.21 11.79Q176-683.42 176-666t-11.79 29.21Q152.43-625 135-625ZM450-80v-170H290v-60h380v60H510v170h-60Z" /></svg>
         <h1>Your Irrigation System:</h1>
 
-        <h2>Will Rain (4 hours): False</h2> {/* also tell in how many hours */}
+        <h2>should irrigate: No</h2> {/* also tell in how many hours */}
         <h2>Crop: N/A</h2>
         <h2>Soil Type: Loamy</h2> {/* Soil type and its factors such as water retaining ability etc. */}
         <h2>Season: Winter</h2>
+        <h2><u>Please irrigate your soil.</u></h2>
       </div>
     </div>
   );
 };
 
-// function ControlIrrigationSystem() {
-//   function postReq() {
-//     const req = fetch(
-//       'https://8c9dw08c-8000.inc1.devtunnels.ms/api/irr/',
-//       {
-//         headers: {
-//           "Content-Type": 'application/json'
-//         },
-//         method: 'POST',
-//       }
-//     )
-//   }
-//   return (
-//     <div className='card common-properties'>
-//       <button className='btn btn-peace' id='irr-btn' onClick={postReq}>Irrigate</button>
-//       <p>In order to create a balance in soil factors, sprinkler will irrigate for 20 mins. Once activated, it can't stop.</p>
-//     </div>
-//   )
+function ControlIrrigationSystem() {
+  function postReq() {
+    const req = fetch(
+      'https://8c9dw08c-8000.inc1.devtunnels.ms/api/irr/',
+      {
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        method: 'POST',
+      }
+    )
+  }
+  return (
+    <div className='card common-properties'>
+      <button className='btn btn-peace' id='irr-btn' onClick={postReq}>Irrigate/Stop irrigation</button>
+    </div>
+  )
 
-// }
+}
 
 function FarmCareAIComp() {
   const [prompt, setPrompt] = useState({
@@ -176,7 +182,7 @@ function FarmCareAIComp() {
       .catch((err) => (console.log(err)));
   };
   return (
-    <div className='ai-card common-properties' style={{marginTop: '4px'}}>
+    <div className='ai-card common-properties' style={{ marginTop: '4px' }}>
       <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 24.75-17.62 42.37Q724.75-160 700-160H600v80h-60v-140h160v-200h114l-45-180q-24-97-105-158.5T480-820q-125 0-212.5 86.5T180-522.46q0 64.42 26.32 122.39Q232.65-342.09 281-297l19 18v199h-60Zm257-370Zm-48 76h60l3-44q12-2 22.47-8.46Q544.94-432.92 553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8.33-7.69-19.17-13.85Q523-635 512-638l-3-44h-60l-3 44q-11 3-21.83 9.15Q413.33-622.69 405-615l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8.06 8.08 18.53 14.54Q434-420 446-418l3 44Zm30.12-84q-29.12 0-49.62-20.38-20.5-20.38-20.5-49.5t20.38-49.62q20.38-20.5 49.5-20.5t49.62 20.38q20.5 20.38 20.5 49.5t-20.38 49.62q-20.38 20.5-49.5 20.5Z" /></svg>
       <form id='ai-form' onSubmit={postUserPrompt}>
         <h1>FarmCare AI</h1>
@@ -236,6 +242,8 @@ function App() {
                 </div>
                 <hr />
                 <h1 style={{ textAlign: 'center' }}>{item.weather_data[7]}, {item.weather_data[8]}</h1>
+                <hr />
+                {/* <p>{item.weather_data[9]}</p> */}
               </div>))}
           </div>
         </div>
@@ -249,9 +257,9 @@ function App() {
         <IrrigationInfoComp />
       </section>
 
-      {/* <section>
+      <section>
         <ControlIrrigationSystem />
-      </section> */}
+      </section>
 
       <section>
         <FarmCareAIComp />

@@ -9,13 +9,12 @@ def index(request):
     return HttpResponse('Hello World')
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def weather_(request):
     weather_data = get_weather()
     res = [{'key': 0, 'weather_data': weather_data}]
-    if request.method == 'POST':
-        dat = request.data
     return Response(data=res)
+    
 
 @api_view(['POST'])
 def set_timer(request):
@@ -28,6 +27,14 @@ def irr(request):
 
 @api_view(['POST'])
 def farm_care_ai(request):
+    res = request.data 
+    answer = pull_answer(res['up'])
+    response = [{'key': 0, 'answer': answer}] 
+    return Response(data=response)
+
+
+@api_view(['POST'])
+def weather_prediction_(request):
     res = request.data 
     answer = pull_answer(res['up'])
     response = [{'key': 0, 'answer': answer}] 
