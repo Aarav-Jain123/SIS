@@ -5,3 +5,6 @@ imp steps:
 3. ask wi-fi password
 4. test code
 5. convert to dev tunnel
+6. Elaborate condition el at weather puller
+7. google slides
+8.
