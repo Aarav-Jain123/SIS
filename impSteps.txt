@@ -7,4 +7,4 @@ imp steps:
 5. convert to dev tunnel
 6. Elaborate condition el at weather puller
 7. google slides
-8.
+8. install jupyter, anaconda
