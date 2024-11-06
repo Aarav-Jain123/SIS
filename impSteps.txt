@@ -8,3 +8,4 @@ imp steps:
 6. Elaborate condition el at weather puller
 7. google slides
 8. install jupyter, anaconda
+9. google slides file: https://docs.google.com/presentation/d/1FhyVtr-HskFfdwEWzxzWlSp4mGO9aP7r/edit#slide=id.p1
